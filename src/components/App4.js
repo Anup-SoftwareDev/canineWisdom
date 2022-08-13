@@ -1,5 +1,6 @@
 import {CardActions,CardMedia, CardContent, Card, Typography, Button} from "@mui/material"
 import React, {useState}from 'react'
+import "../style.css"
 
 
 export default function App4() {
@@ -27,34 +28,47 @@ export default function App4() {
     }
 
     return (
-      <Card sx={{ maxWidth: 1000, display: 'flex', flexDirection: 'row' }}>
-       
-        <CardContent>
-        <Typography gutterBottom variant="h2" component="div">
-          Canine Wisdom
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-          {activity.author?activity.author:"Unknown Author"}
-          </Typography>
-          <Typography variant="h6" color="text.secondary">
-          {activity.text}
-          </Typography>
-        <CardActions>
-          <Button  variant="contained" onClick = {handleClick}>Next Pearl of Wisdom</Button>
-        </CardActions> 
-        <br></br> 
-        <Typography variant="h5" color="text.secondary">
-          And You thought Dogs were not wise 😜!
-          </Typography>
+
+      <Card className = "main-card" sx = {{borderRadius: 5}}>
+        <Card sx = {{ borderBottom: 5, borderColor: 'primary.main'}}>
+            <Typography className = "heading" gutterBottom variant="h3" component="div" align = "center">
+                Canine Wisdom
+            </Typography>
+        </Card>
+        <CardContent className = "wisdom">
+            
+                <CardContent>
+                     
+                      <Card className = "author-title" sx = {{borderRadius: 3}}>
+                            
+                            <Typography className = "author"  gutterBottom variant="h4" component="div">
+                                {activity.author?activity.author:"Unknown Author"}
+                            </Typography>
+                            <Typography className = "quote" variant="h5" color="text.secondary">
+                                  {activity.text}
+                            </Typography>
+                      </Card>
+                      <br></br> 
+                        <CardActions>
+                            <Button size="large"  variant="contained" onClick = {handleClick}>Next Pearl of Wisdom</Button>
+                        </CardActions> 
+                        <br></br> 
+                        <Typography variant="h5" color="RoyalBlue">
+                              And You thought Dogs were not wise 🐶!
+                        </Typography>
+                </CardContent>
+            
+           
+            <CardMedia
+                component="img"
+                className = "img"
+                sx={{ borderRadius: 5}}
+                image= {`${dog}`}
+                alt="dog"
+                />
+            
         </CardContent>
         
-        <CardMedia
-          component="img"
-          
-          sx={{ width: 400, height: 400  }}
-          image= {`${dog}`}
-          alt="dog"
-        />
       </Card>
     );
   }
